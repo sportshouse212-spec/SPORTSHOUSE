@@ -3,134 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport House - সেরা স্পোর্টস কালেকশন</title>
+    <title>Pay Service</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
         }
+
         body {
-            background-color: #f4f4f9;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        /* Top Header */
+        .header {
+            background-color: #00563B;
+            color: white;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .amount {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .sub-text {
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .badge-pay {
+            background-color: #fff;
+            color: #00563B;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+
+        .lang-switch {
+            font-size: 11px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Warning Text */
+        .warning-section {
+            text-align: center;
+            margin: 20px 0;
+            color: #d9534f;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Numbers Box */
+        .account-box {
+            background-color: #e2e2e2;
+            margin: 0 15px;
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .account-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+        }
+
+        .nagad {
+            background-color: #f37021;
+        }
+
+        .bkash {
+            background-color: #e2136e;
+        }
+
+        .number-display {
+            background-color: #fff;
+            flex: 1;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        /* Help Link */
+        .help-link {
+            text-align: center;
+            margin: 25px 0 10px;
+            color: #00a896;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Form Input Section */
+        .form-section {
+            padding: 0 15px;
+            text-align: center;
+        }
+
+        .trx-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e74c3c;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            text-align: center;
+        }
+
+        .expiry-text {
+            text-align: left;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 15px 0;
             color: #333;
         }
-        header {
-            background-color: #111;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        header h1 {
-            color: #ff4500;
-            font-size: 2.5rem;
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background: #fff;
+
+        .submit-btn {
+            background-color: #ffffff;
+            border: 1px solid #777;
+            padding: 8px 30px;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-            padding: 15px;
-        }
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .product-card h3 {
-            margin: 15px 0 10px;
-        }
-        .price {
-            color: #ff4500;
-            font-size: 1.2rem;
+            font-size: 15px;
             font-weight: bold;
-            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .btn-order {
-            display: inline-block;
-            background-color: #25d366;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
+
+        .submit-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Success Message Styling */
+        .success-box {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
             border-radius: 5px;
             font-weight: bold;
-        }
-        footer {
-            background-color: #222;
-            color: #ccc;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Sport House</h1>
-        <p>আপনার পছন্দের সেরা স্পোর্টস গিয়ার ও ফুটবল বুট কালেকশন</p>
-    </header>
-
-    <section class="hero">
-        <h2>সেরা কোয়ালিটির প্রিমিয়াম ফুটবল বুট</h2>
-        <p>সেরা অফারে আজই আপনার পছন্দের বুটটি অর্ডার করুন</p>
-    </section>
-
-    <div class="container">
-        <h2 style="text-align: center; margin-bottom: 30px;">ট্রেন্ডিং প্রোডাক্টস</h2>
-        
-        <div class="products">
-            <!-- প্রোডাক্ট ১ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="ফুটবল বুট">
-                <h3>প্রিমিয়াম ফুটবল বুট - ব্ল্যাক</h3>
-                <p class="price">৳ ২,৫০৩</p>
-                <a href="https://wa.me/8801700000000?text=I%20want%20to%20order%20Black%20Football%20Boots" class="btn-order">হোয়াটসঅ্যাপে অর্ডার করুন</a>
-            </div>
-
-            <!-- প্রোডাক্ট ২ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="ফুটবল বুট">
-                <h3>প্রফেশনাল টার্ফ বুট</h3>
-                <p class="price">৳ ৩,২০০</p>
-                <a href="https://wa.me/8801700000000?text=I%20want%20to%20order%20Turf%20Boots" class="btn-order">হোয়াটসঅ্যাপে অর্ডার করুন</a>
-            </div>
-
-            <!-- প্রোডাক্ট ৩ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="জার্সি">
-                <h3>অফিসিয়াল টিম ক্লাব জার্সি</h3>
-                <p class="price">৳ ১,২০০</p>
-                <a href="https://wa.me/8801700000000?text=I%20want%20to%20order%20Team%20Jersey" class="btn-order">হোয়াটসঅ্যাপে অর্ডার করুন</a>
-            </div>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <span class="amount">BDT 1150.00</span>
+            <span class="sub-text">কম বা বেশি ক্যাশআউট করবেন না</span>
+        </div>
+        <div class="header-right">
+            <span class="badge-pay">PAY SERVICE</span>
+            <span class="lang-switch">EN | ভাষা</span>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Sport House. All Rights Reserved.</p>
-    </footer>
+    <!-- Warning Line -->
+    <div class="warning-section">
+        🚨 🚨 🚨 নিচে স্ক্রোল করুন এবং 【Send Money
+    </div>
+
+    <!-- Mobile Wallet Numbers -->
+    <div class="account-box">
+        <div class="account-row">
+            <div class="logo nagad">নগদ</div>
+            <div class="number-display">01918099690</div>
+        </div>
+        <div class="account-row">
+            <div class="logo bkash">বিকাশ</div>
+            <div class="number-display">01830482266</div>
+        </div>
+    </div>
+
+    <!-- Instruction Link -->
+    <div class="help-link">
+        কিভাবে TrxID পেতে হয় তা দেখতে ক্লিক করুন
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+        <form id="paymentForm">
+            <input type="text" id="trxId" class="trx-input" placeholder="TrxID অবশ্যই পূরণ করতে হবে!" required>
+            
+            <div class="expiry-text">
+                মেয়াদ শেষঃ
+            </div>
+
+            <button type="submit" class="submit-btn">নিশ্চিত</button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-box">
+            ✅ Transaction Successful! আপনার পেমেন্ট সফল হয়েছে।
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // পেজ রিফ্রেশ হওয়া বন্ধ করে
+        
+        var trxIdInput = document.getElementById('trxId').value.trim();
+
+        if (trxIdInput !== "") {
+            // পপ-আপ অ্যালার্ট মেসেজ
+            alert("সাকসেস! আপনার TrxID: " + trxIdInput + " সফলভাবে জমা হয়েছে।");
+            
+            // ইনপুট বক্সে নিচে সাকসেস মেসেজ দেখানোর জন্য
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // ইনপুট বক্স খালি করা
+            document.getElementById('trxId').value = '';
+        }
+    });
+</script>
 
 </body>
 </html>
