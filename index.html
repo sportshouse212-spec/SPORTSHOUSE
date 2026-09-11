@@ -4,557 +4,407 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPORTS HOUSE - Premium Football Boots</title>
-    <!-- FontAwesome Font for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Top Bar Layout */
-        .top-bar {
-            background-color: #111;
-            color: #fff;
-            padding: 8px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            position: relative;
-        }
-
-        .top-center-btn {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .top-center-btn:hover {
-            background-color: #c0392b;
-        }
-
-        .login-btn {
-            background-color: #ff9800;
-            color: #fff;
-            border: none;
-            padding: 6px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .user-status {
-            color: #25d366;
-            font-weight: bold;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .phone-badge {
-            display: inline-block;
-            background-color: #ff9800;
-            color: #fff;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* Offer Banner */
-        .offer-banner {
-            background-color: #e74c3c;
-            color: white;
-            text-align: center;
-            padding: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        /* Container & Grid */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            color: #1e3c72;
-        }
-
-        /* ৩ কলামের গ্রিড সিস্টেম */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        /* রেসপনসিভ ডিজাইন */
-        @media (max-width: 900px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .product-grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
-
-        /* Product Card */
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-card .img-wrapper {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
-        }
-
-        .img-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.3);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-weight: bold;
-        }
-
-        .product-card .img-wrapper:hover .img-overlay {
-            opacity: 1;
-        }
-
-        .product-info {
-            padding: 1.2rem;
-            text-align: center;
-        }
-
-        .product-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-tag {
-            font-size: 1.4rem;
-            color: #27ae60;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .order-btn {
-            display: block;
-            width: 100%;
-            background-color: #27ae60;
-            color: white;
-            text-decoration: none;
-            padding: 10px 0;
-            border-radius: 6px;
-            font-weight: bold;
-        }
-
-        /* Modal / Popup General Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            max-width: 450px;
-            width: 90%;
-            position: relative;
-            text-align: center;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px; right: 15px;
-            font-size: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #333;
-        }
-
-        /* Social Popup Links */
-        .social-links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .social-link-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.05rem;
-            transition: 0.2s;
-        }
-
-        .social-link-item:hover {
-            opacity: 0.9;
-        }
-
-        .youtube-btn { background-color: #FF0000; }
-        .facebook-btn { background-color: #1877F2; }
-        .whatsapp-support-btn { background-color: #25D366; }
-
-        /* Image Gallery Modal */
-        .main-popup-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .thumb-images {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .thumb-images img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 6px;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .thumb-images img:hover {
-            border-color: #ff9800;
-        }
-
-        /* Login Modal Form */
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .login-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #1e3c72;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-weight: bold;
-            text-decoration: none;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; line-height: 1.6; }
+        
+        .top-bar { background-color: #111; color: #fff; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; }
+        .social-direct-links { display: flex; align-items: center; gap: 10px; }
+        .social-btn-direct { color: white; text-decoration: none; padding: 4px 10px; border-radius: 15px; font-weight: bold; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+        .fb-direct { background-color: #1877F2; }
+        .yt-direct { background-color: #FF0000; }
+        .social-btn-direct:hover { opacity: 0.8; }
+        
+        .login-btn { background-color: #ff9800; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
+        .user-status { color: #25d366; font-weight: bold; }
+        
+        header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; text-align: center; padding: 1.5rem 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .shop-logo { width: 100px; height: 100px; object-fit: contain; border-radius: 50%; background: white; padding: 5px; margin-bottom: 10px; border: 3px solid #ff9800; }
+        header h1 { font-size: 2.2rem; letter-spacing: 2px; margin-bottom: 0.3rem; text-transform: uppercase; }
+        .phone-badge { display: inline-block; background-color: #ff9800; color: #fff; padding: 6px 16px; border-radius: 20px; font-weight: bold; margin-top: 10px; font-size: 1rem; }
+        .offer-banner { background-color: #e74c3c; color: white; text-align: center; padding: 12px; font-size: 1.2rem; font-weight: bold; }
+        
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        .section-title { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; color: #1e3c72; }
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: repeat(1, 1fr); } }
+        
+        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card .img-wrapper { position: relative; cursor: pointer; }
+        .product-card img { width: 100%; height: 280px; object-fit: contain; background-color: #fafafa; border-bottom: 1px solid #eee; }
+        .img-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); color: white; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; font-weight: bold; }
+        .product-card .img-wrapper:hover .img-overlay { opacity: 1; }
+        .product-info { padding: 1.2rem; text-align: center; }
+        .product-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .price-tag { font-size: 1.4rem; color: #27ae60; font-weight: bold; margin-bottom: 1rem; }
+        .order-btn { display: block; width: 100%; background-color: #27ae60; color: white; text-decoration: none; padding: 10px 0; border-radius: 6px; font-weight: bold; }
+        
+        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        .modal-content { background-color: white; padding: 20px; border-radius: 12px; max-width: 450px; width: 90%; position: relative; text-align: center; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 25px; font-weight: bold; cursor: pointer; color: #333; }
+        .main-popup-img { width: 100%; height: 320px; object-fit: contain; background-color: #f8f9fa; border-radius: 8px; margin-bottom: 10px; }
+        .thumb-images { display: flex; gap: 10px; justify-content: center; }
+        .thumb-images img { width: 70px; height: 70px; object-fit: contain; background-color: #fff; border-radius: 6px; cursor: pointer; border: 2px solid #ddd; }
+        .login-form input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .login-form button { width: 100%; padding: 10px; background-color: #1e3c72; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; padding: 12px 20px; font-weight: bold; text-decoration: none; z-index: 1000; display: flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
-
-    <!-- Top Bar -->
     <div class="top-bar">
         <span>SPORTS HOUSE</span>
-        
-        <button class="top-center-btn" onclick="openSocialModal()">
-            <i class="fa-solid fa-link"></i> সোশ্যাল লিংক ও সাপোর্ট
-        </button>
-
-        <div id="userInfo">
-            <button class="login-btn" onclick="openLoginModal()">লগইন করুন</button>
+        <div class="social-direct-links">
+            <a href="https://www.facebook.com/profile.php?id=61577608190838" target="_blank" class="social-btn-direct fb-direct"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="https://youtube.com/@YOUR_CHANNEL_LINK" target="_blank" class="social-btn-direct yt-direct"><i class="fa-brands fa-youtube"></i> YouTube</a>
         </div>
+        <div id="userInfo"><button class="login-btn" onclick="openLoginModal()">লগইন করুন</button></div>
     </div>
-
-    <!-- Header Section -->
     <header>
+        <img src="https://i.ibb.co.com/qLddq8bF/1789084300868.jpg" alt="SPORTS HOUSE Logo" class="shop-logo">
         <h1>SPORTS HOUSE</h1>
         <p>প্রিমিয়াম কোয়ালিটি ফুটবল বুট কালেকশন</p>
         <div class="phone-badge">📞 Hotline: +8801918099690</div>
     </header>
-
-    <!-- Special Offer Banner -->
-    <div class="offer-banner">
-        🔥 স্পেশাল অফার মূল্য: মাত্র ১১৫০ টাকা!
-    </div>
-
-    <!-- Main Content Container -->
-    <div class="container">
-        <h2 class="section-title">আমাদের কালেকশন (ছবিতে ক্লিক করে বিস্তারিত দেখুন)</h2>
-
+    <div class="offer-banner">🔥 স্পেশাল অফার মূল্য: মাত্র ১১৫০ টাকা!</div>
+        <div class="container">
+        <h2 class="section-title">আমাদের কালেকশন (ছবিতে ক্লিক করে বড় করে দেখুন)</h2>
         <div class="product-grid">
 
-            <!-- Item 1 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/k2VDw6Y3/image.jpg'])">
-                    <img src="https://i.ibb.co.com/k2VDw6Y3/image.jpg" alt="Football Boot 1">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/rK8KCgnZ/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/wFRJb2hj/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/99kFV3BC/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp'])">
+                    <img src="https://i.ibb.co.com/rK8KCgnZ/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp" alt="Soccer Boots">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১</div>
+                    <div class="product-title">Gear Up Soccer Boots - Set 1</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%201" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Gear%20Up%20Set%201" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 2 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/HDxGfQhR/image.jpg'])">
-                    <img src="https://i.ibb.co.com/HDxGfQhR/image.jpg" alt="Football Boot 2">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/S4xH23L1/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/39ks4qds/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/j9Q7fGJR/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp'])">
+                    <img src="https://i.ibb.co.com/S4xH23L1/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp" alt="Soccer Boots">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ২</div>
+                    <div class="product-title">Gear Up Soccer Boots - Set 2</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%202" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Gear%20Up%20Set%202" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 3 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/nNZVSWLn/image.jpg'])">
-                    <img src="https://i.ibb.co.com/nNZVSWLn/image.jpg" alt="Football Boot 3">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/YFzYcQk7/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/gNtwF6B/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/6JBcHY9h/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp'])">
+                    <img src="https://i.ibb.co.com/YFzYcQk7/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp" alt="Soccer Boots">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৩</div>
+                    <div class="product-title">Gear Up Soccer Boots - Set 3</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%203" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Gear%20Up%20Set%203" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 4 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/RpkQ4PSk/image.jpg'])">
-                    <img src="https://i.ibb.co.com/RpkQ4PSk/image.jpg" alt="Football Boot 4">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/1fWkzL57/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp','https://i.ibb.co.com/Kjc3HBPy/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg','https://i.ibb.co.com/HD2v1XbP/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg'])">
+                    <img src="https://i.ibb.co.com/1fWkzL57/Gear-Up-for-the-Season-Premium-Soccer-Boots-Available-Now-in-Windhoek-Upgrade-your-game-with-t.webp" alt="F50 Laceless">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৪</div>
+                    <div class="product-title">F50 Laceless Edition - Set 1</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%204" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Laceless%20Set%201" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 5 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/v4YFH6sJ/image.jpg'])">
-                    <img src="https://i.ibb.co.com/v4YFH6sJ/image.jpg" alt="Football Boot 5">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/5gwcL6jG/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg','https://i.ibb.co.com/0yshW51L/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg','https://i.ibb.co.com/zVbGbfMz/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg'])">
+                    <img src="https://i.ibb.co.com/5gwcL6jG/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg" alt="F50 Laceless">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৫</div>
+                    <div class="product-title">F50 Laceless Edition - Set 2</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%205" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Laceless%20Set%202" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 6 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/p6q8vYsh/image.jpg'])">
-                    <img src="https://i.ibb.co.com/p6q8vYsh/image.jpg" alt="Football Boot 6">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/tp0XzWK5/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg','https://i.ibb.co.com/35bs68g1/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg','https://i.ibb.co.com/v909NPJ/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg'])">
+                    <img src="https://i.ibb.co.com/tp0XzWK5/F50-Laceless-ANTA-ORAP-EKECEK-HED-YE-Kap-da-deme-effaf-Kargo-Siteden-Kartla-Tek-e.jpg" alt="F50 Laceless">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৬</div>
+                    <div class="product-title">F50 Laceless Edition - Set 3</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%206" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Laceless%20Set%203" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 7 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/fGBdpz6B/image.jpg'])">
-                    <img src="https://i.ibb.co.com/fGBdpz6B/image.jpg" alt="Football Boot 7">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/TMDfRGdk/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg','https://i.ibb.co.com/x8qjtmGX/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg','https://i.ibb.co.com/Jjrjbky7/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg'])">
+                    <img src="https://i.ibb.co.com/TMDfRGdk/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg" alt="Dhaka Special">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৭</div>
+                    <div class="product-title">Dhaka Special Boot Collection</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%207" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Dhaka%20Special%20Boot" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 8 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/bR8Nv60c/image.jpg'])">
-                    <img src="https://i.ibb.co.com/bR8Nv60c/image.jpg" alt="Football Boot 8">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/kV0KhvxD/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg','https://i.ibb.co.com/5xGwSTDc/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg','https://i.ibb.co.com/d4ckddK1/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg'])">
+                    <img src="https://i.ibb.co.com/kV0KhvxD/Football-Boot-1700-tk-Shop-Location-Dhaka-Gulistan-Somoboy-towin-tower-market-Level-Five-Dokan.jpg" alt="Gulistan Special">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৮</div>
+                    <div class="product-title">Gulistan Special Edition</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%208" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Gulistan%20Special%20Edition" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 9 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/zTX02LXD/image.jpg'])">
-                    <img src="https://i.ibb.co.com/zTX02LXD/image.jpg" alt="Football Boot 9">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/bM9cbpWL/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/ZpKn1BjR/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/RTN4HmsW/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg'])">
+                    <img src="https://i.ibb.co.com/bM9cbpWL/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="F50 Hyperfast">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ৯</div>
+                    <div class="product-title">F50 Hyperfast FG LL - Model 1</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%209" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Hyperfast%20Model%201" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 10 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/kp8NnKq/image.jpg'])">
-                    <img src="https://i.ibb.co.com/kp8NnKq/image.jpg" alt="Football Boot 10">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/zT58zmks/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/mCWR9hQ3/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/sdx6QqGx/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg'])">
+                    <img src="https://i.ibb.co.com/zT58zmks/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="F50 Hyperfast">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১০</div>
+                    <div class="product-title">F50 Hyperfast FG LL - Model 2</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%2010" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Hyperfast%20Model%202" class="order-btn">অর্ডার করুন</a>
+                </div>
+            </div>
+                        <div class="product-card">
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/ZRHzht80/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/Y4m4pZXg/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/G46BRcXK/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg'])">
+                    <img src="https://i.ibb.co.com/ZRHzht80/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="F50 Hyperfast">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">F50 Hyperfast FG LL - Model 3</div>
+                    <div class="price-tag">1150 টাকা</div>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Hyperfast%20Model%203" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 11 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/s9FZ8MHw/image.jpg'])">
-                    <img src="https://i.ibb.co.com/s9FZ8MHw/image.jpg" alt="Football Boot 11">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/HfYtZRd6/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/cSf23J6t/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/wNxF0JNK/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg'])">
+                    <img src="https://i.ibb.co.com/HfYtZRd6/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="F50 Hyperfast">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১১</div>
+                    <div class="product-title">F50 Hyperfast FG LL - Model 4</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%2011" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Hyperfast%20Model%204" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 12 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/WNzScNkR/image.jpg'])">
-                    <img src="https://i.ibb.co.com/WNzScNkR/image.jpg" alt="Football Boot 12">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/HpDcvS81/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/3ycvtzjG/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/Mx0VyDnk/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg'])">
+                    <img src="https://i.ibb.co.com/HpDcvS81/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="F50 Hyperfast">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১২</div>
+                    <div class="product-title">F50 Hyperfast FG LL - Model 5</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%2012" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Hyperfast%20Model%205" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 13 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/TxyRVXNJ/image.jpg'])">
-                    <img src="https://i.ibb.co.com/TxyRVXNJ/image.jpg" alt="Football Boot 13">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/BSSYCFx/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/zH63Xg0L/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/jP3yKRbV/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg'])">
+                    <img src="https://i.ibb.co.com/BSSYCFx/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="F50 Hyperfast">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১৩</div>
+                    <div class="product-title">F50 Hyperfast FG LL - Model 6</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%2013" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20F50%20Hyperfast%20Model%206" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 14 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/2325zmTz/image.jpg'])">
-                    <img src="https://i.ibb.co.com/2325zmTz/image.jpg" alt="Football Boot 14">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/TDtg14mw/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg','https://i.ibb.co.com/RGmNXssQ/Size-6-7-8-thangmeibandboots-JPG.jpg','https://i.ibb.co.com/2Y12cV2k/Size-6-7-8-thangmeibandboots-JPG-1.jpg'])">
+                    <img src="https://i.ibb.co.com/TDtg14mw/F50-HYPERFAST-FG-LL-Tamanhos-36-45-Entrega-em-10-15-dias-Pre-o-4-500-MT-849010671-8790.jpg" alt="Size 6-7-8">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১৪</div>
+                    <div class="product-title">Thangmeiband Boots Collection</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Boot%2014" class="order-btn">অর্ডার করুন</a>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Thangmeiband%20Boots" class="order-btn">অর্ডার করুন</a>
                 </div>
             </div>
 
-            <!-- Item 15 -->
             <div class="product-card">
-                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/hR4JYcnK/image.jpg'])">
-                    <img src="https://i.ibb.co.com/hR4JYcnK/image.jpg" alt="Football Boot 15">
-                    <div class="img-overlay">🔍 ক্লিক করে বড় দেখুন</div>
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/XrJVjszT/Size-6-7-8-thangmeibandboots-JPG-2.jpg','https://i.ibb.co.com/PZTDLT67/Adidas-X-F50-Hyperfast-Laceless-Elite-FG-Light-boot-for-speedy-and-forward-position-players-Get.webp','https://i.ibb.co.com/kttLK4j/Adidas-X-F50-Hyperfast-Laceless-Elite-FG-Light-boot-for-speedy-and-forward-position-players-Get.webp'])">
+                    <img src="https://i.ibb.co.com/XrJVjszT/Size-6-7-8-thangmeibandboots-JPG-2.jpg" alt="Adidas X F50">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
                 </div>
                 <div class="product-info">
-                    <div class="product-title">ফুটবল বুট মডেল - ১৫</div>
+                    <div class="product-title">Adidas X F50 Hyperfast Elite</div>
                     <div class="price-tag">1150 টাকা</div>
-                    <a href="https://wa.m
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Adidas%20X%20F50" class="order-btn">অর্ডার করুন</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/MxGdw7jN/Adidas-X-F50-Hyperfast-Laceless-Elite-FG-Light-boot-for-speedy-and-forward-position-players-Get.webp','https://i.ibb.co.com/7dTYMq8L/Nike-Timepo-Maestro-Elite-FG-First-launched-colorway-of-Maestro-model-Only-few-pairs-available.webp','https://i.ibb.co.com/yF2s7rxT/Nike-Timepo-Maestro-Elite-FG-First-launched-colorway-of-Maestro-model-Only-few-pairs-available.webp'])">
+                    <img src="https://i.ibb.co.com/MxGdw7jN/Adidas-X-F50-Hyperfast-Laceless-Elite-FG-Light-boot-for-speedy-and-forward-position-players-Get.webp" alt="Nike Tiempo">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Nike Tiempo Maestro Elite FG</div>
+                    <div class="price-tag">1150 টাকা</div>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Nike%20Tiempo%20Maestro" class="order-btn">অর্ডার করুন</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/CKwpDg1N/Nike-Timepo-Maestro-Elite-FG-First-launched-colorway-of-Maestro-model-Only-few-pairs-available.webp','https://i.ibb.co.com/d469xt9G/New-JPG-12.jpg','https://i.ibb.co.com/9kSQh5St/New-JPG-19.jpg'])">
+                    <img src="https://i.ibb.co.com/CKwpDg1N/Nike-Timepo-Maestro-Elite-FG-First-launched-colorway-of-Maestro-model-Only-few-pairs-available.webp" alt="Nike Tiempo">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Nike Tiempo Maestro Special</div>
+                    <div class="price-tag">1150 টাকা</div>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20Nike%20Tiempo%20Special" class="order-btn">অর্ডার করুন</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/bgN4LqVt/New-JPG-5.jpg','https://i.ibb.co.com/7t1SjsFx/New-JPG-18.jpg','https://i.ibb.co.com/C5svRskb/New-JPG-8.jpg'])">
+                    <img src="https://i.ibb.co.com/bgN4LqVt/New-JPG-5.jpg" alt="New Arrival">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">New Arrival Football Boot - 19</div>
+                    <div class="price-tag">1150 টাকা</div>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20New%20Arrival%2019" class="order-btn">অর্ডার করুন</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-wrapper" onclick="openGallery(['https://i.ibb.co.com/6RRnLnzz/New-JPG.jpg','https://i.ibb.co.com/bgN4LqVt/New-JPG-5.jpg','https://i.ibb.co.com/C5svRskb/New-JPG-8.jpg'])">
+                    <img src="https://i.ibb.co.com/6RRnLnzz/New-JPG.jpg" alt="New Arrival">
+                    <div class="img-overlay">🔍 ক্লিক করে ৩টি ভিউ দেখুন</div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">New Arrival Football Boot - 20</div>
+                    <div class="price-tag">1150 টাকা</div>
+                    <a href="https://wa.me/8801918099690?text=I%20want%20to%20order%20New%20Arrival%2020" class="order-btn">অর্ডার করুন</a>
+                </div>
+            </div>
+
+        </div>
+        </div>
+            <!-- Image Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeGallery()">&times;</span>
+            <div class="click-hint">🔍 ছবিতে ক্লিক করলে ফুল স্ক্রিনে দেখতে পাবেন</div>
+            <img id="mainPopupImg" class="main-popup-img" src="" alt="Popup Image" onclick="openFullscreen(this.src)">
+            <div id="thumbContainer" class="thumb-images"></div>
+        </div>
+    </div>
+
+    <!-- Fullscreen View Modal -->
+    <div id="fullscreenModal">
+        <span class="close-fullscreen" onclick="closeFullscreen()">&times;</span>
+        <img id="fullscreenImg" src="" alt="Fullscreen Image">
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <h3>লাইফটাইম লগইন</h3>
+            <div class="login-form">
+                <input type="text" id="userIdentity" placeholder="ইমেইল অথবা ফোন নাম্বার দিন">
+                <button onclick="handleLogin()">লগইন নিশ্চিত করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/8801918099690" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> সরাসরি হোয়াটসঅ্যাপে অর্ডার
+    </a>
+
+    <script>
+        function openGallery(images) {
+            const modal = document.getElementById('galleryModal');
+            const mainImg = document.getElementById('mainPopupImg');
+            const thumbContainer = document.getElementById('thumbContainer');
+            
+            thumbContainer.innerHTML = '';
+            mainImg.src = images[0];
+
+            images.forEach((imgUrl) => {
+                const thumb = document.createElement('img');
+                thumb.src = imgUrl;
+                thumb.onclick = function() { mainImg.src = imgUrl; };
+                thumbContainer.appendChild(thumb);
+            });
+
+            modal.style.display = 'flex';
+        }
+
+        function closeGallery() { document.getElementById('galleryModal').style.display = 'none'; }
+
+        function openFullscreen(src) {
+            const fsModal = document.getElementById('fullscreenModal');
+            const fsImg = document.getElementById('fullscreenImg');
+            fsImg.src = src;
+            fsModal.style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenModal').style.display = 'none';
+        }
+
+        function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+
+        function handleLogin() {
+            const inputVal = document.getElementById('userIdentity').value;
+            if(inputVal.trim() !== "") {
+                localStorage.setItem('sportsHouseUser', inputVal);
+                checkUserLogin();
+                closeLoginModal();
+            } else {
+                alert("দয়া করে সঠিক ইমেইল বা ফোন নাম্বার দিন");
+            }
+        }
+
+        function checkUserLogin() {
+            const savedUser = localStorage.getItem('sportsHouseUser');
+            const userInfoDiv = document.getElementById('userInfo');
+            if(savedUser) {
+                userInfoDiv.innerHTML = `<span class="user-status">স্বাগতম, ${savedUser}</span> <button onclick="logout()" style="padding: 2px 8px; font-size:0.8rem; cursor:pointer;">লগআউট</button>`;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('sportsHouseUser');
+            location.reload();
+        }
+
+        window.onload = function() { checkUserLogin(); };
+    </script>
+</body>
+</html>
