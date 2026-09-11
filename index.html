@@ -277,7 +277,7 @@
       background-color: #f0f0f0;
     }
 
-    /* Success & Failed Screen Common Styles */
+    /* Status Screen Styles */
     .status-view {
       display: flex;
       flex-direction: column;
@@ -427,7 +427,7 @@
       <input type="text" id="trxInput" class="trx-input" placeholder="TrxID অবশ্যই পূরণ করতে হবে!">
     </div>
 
-    <!-- Live Timer Countdown (31 Minutes persistent) -->
+    <!-- Live Timer Countdown Box -->
     <div class="countdown-box">
       <span>মেয়াদ শেষ:</span>
       <span class="timer-text" id="countdown">31:00</span>
@@ -438,50 +438,51 @@
   </div>
 
   <script>
-    // ১. টাইমার সেটআপ (রিফ্রেশ করলেও আগের জায়গা থেকে চলবে)
-    const INITIAL_TIME = 31 * 60;
-    let timeInSeconds;
+    // ১. রিয়েল-টাইম কাউন্টডাউন টাইমার ফাংশনাল লজিক
+    const DURATION_IN_MINUTES = 31;
+    let endTime = localStorage.getItem('paymentEndTime');
 
-    if (localStorage.getItem('savedTimer')) {
-      timeInSeconds = parseInt(localStorage.getItem('savedTimer'), 10);
+    if (!endTime) {
+      endTime = Date.now() + DURATION_IN_MINUTES * 60 * 1000;
+      localStorage.setItem('paymentEndTime', endTime);
     } else {
-      timeInSeconds = INITIAL_TIME;
-      localStorage.setItem('savedTimer', timeInSeconds);
+      endTime = parseInt(endTime, 10);
     }
 
-    const countdownElement = document.getElementById('countdown');
+    function updateTimer() {
+      const countdownElement = document.getElementById('countdown');
+      if (!countdownElement) return;
 
-    const timer = setInterval(() => {
-      let minutes = Math.floor(timeInSeconds / 60);
-      let seconds = timeInSeconds % 60;
+      const now = Date.now();
+      const distance = endTime - now;
+
+      if (distance <= 0) {
+        localStorage.removeItem('paymentEndTime');
+        countdownElement.textContent = "সময় শেষ!";
+        return;
+      }
+
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       minutes = minutes < 10 ? '0' + minutes : minutes;
       seconds = seconds < 10 ? '0' + seconds : seconds;
 
-      if (countdownElement) {
-        countdownElement.textContent = `${minutes}:${seconds}`;
-      }
+      countdownElement.textContent = `${minutes}:${seconds}`;
+    }
 
-      if (timeInSeconds <= 0) {
-        clearInterval(timer);
-        localStorage.removeItem('savedTimer');
-        if (countdownElement) countdownElement.textContent = "সময় শেষ!";
-      } else {
-        timeInSeconds--;
-        localStorage.setItem('savedTimer', timeInSeconds);
-      }
-    }, 1000);
+    // প্রতি ১ সেকেন্ড পরপর টাইমার আপডেট হওয়া
+    updateTimer();
+    const timerInterval = setInterval(updateTimer, 1000);
 
-    // ২. ট্রানজেকশন ভ্যালিডেশন এবং সাকসেস/ব্যর্থ স্ক্রিন প্রদর্শন
+    // ২. ট্রানজেকশন ভ্যালিডেশন
     function validateTrx() {
       const userInput = document.getElementById('trxInput').value.trim();
       const container = document.getElementById('mainContainer');
 
-      // ৮ থেকে ১২ অক্ষরের ইংরেজি ক্যারেক্টার ও সংখ্যা চেক করা
       const trxPattern = /^[A-Za-z0-9]{8,12}$/;
 
       if (trxPattern.test(userInput)) {
-        // সঠিক TrxID দিলে সফল স্ক্রিন দেখাবে
         container.innerHTML = `
           <div class="header">
             <div class="header-left">
@@ -516,7 +517,6 @@
           </div>
         `;
       } else {
-        // ভুল TrxID দিলে ট্রানজেকশন ব্যর্থ স্ক্রিন দেখাবে
         container.innerHTML = `
           <div class="header">
             <div class="header-left">
